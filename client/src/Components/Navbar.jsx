@@ -3,7 +3,6 @@ import styled from 'styled-components'
 import { Link, useNavigate } from 'react-router-dom'
 import { FaBars } from 'react-icons/fa'
 import logo from '../assets/Logo.svg'
-import { AuthContext } from '../context/AuthContext'
 import Cookies from 'js-cookie';
 
 const Nav = styled.nav`
@@ -92,17 +91,7 @@ const MobileIcon = styled.div`
 
 const Navbar = ({ toggle }) => {
   const [scrollNav, setScrollNav] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
-  const user_id = useContext(AuthContext)
   const navigate = useNavigate();
-  const change = () => {
-    if (user_id.length === null){
-      setIsLoggedIn(false);
-    }
-    else{
-      setIsLoggedIn(true);
-    }
-  }
   const logout = ()=> {
     Cookies.remove('logincookies');
 
@@ -129,7 +118,7 @@ const Navbar = ({ toggle }) => {
       <Navlinks>
         <NavLink to="/">Home</NavLink>
         <NavLink to="/about">About</NavLink>
-        <SideBtnWrap onClick={change}>
+        <SideBtnWrap >
           {Cookies.get("logincookies") ? (
             <SidebarRoute to="/admin">Profile</SidebarRoute>
           ) : (
