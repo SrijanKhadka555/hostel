@@ -1,7 +1,6 @@
 import React, { createContext, useReducer, useEffect, useState } from "react"
 import Cookies from "js-cookie"
 
-// const [isLoggedIn, setIsLoggedIn] = useState(true);
 
 const INITIAL_STATE = {
     user_id: Cookies.get("user_id") || null ,
@@ -9,8 +8,6 @@ const INITIAL_STATE = {
     token: Cookies.get("token") || null,
     loading: false,
     error: null,
-    // isLoggedIn: isLoggedIn,
-    // setIsLoggedIn: setIsLoggedIn
 }
 
 export const AuthContext = createContext(INITIAL_STATE)
